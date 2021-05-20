@@ -1,5 +1,5 @@
-import React, { useState, FC } from "react";
-import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+import React, { FC } from "react";
+import { useRecoilState } from "recoil";
 import { Task, taskState } from "../atoms/Task";
 
 interface TaskItemProps {
@@ -33,11 +33,15 @@ const TaskItem: FC<TaskItemProps> = ({ task, index }) => {
   };
 
   return (
-    <li key={index}>
+    <label className="panel-block" key={index}>
       <input type="checkbox" checked={task.completed} onChange={handleChange} />
-      {task.title}
-      <button onClick={handleClick}>削除</button>
-    </li>
+      <span className={task.completed ? "has-text-grey-light" : ""}>
+        {task.title}
+      </span>
+      <button className="delete-btn" onClick={handleClick}>
+        Delete
+      </button>
+    </label>
   );
 };
 

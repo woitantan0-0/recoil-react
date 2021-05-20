@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 
 export interface Task {
+  key: string;
   title: string;
   completed: boolean;
 }
